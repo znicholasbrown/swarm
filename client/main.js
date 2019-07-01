@@ -1,0 +1,1 @@
+console.log('This is the main client-side JS file.')

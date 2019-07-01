@@ -13,7 +13,6 @@ services:
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     environment:
-      API_HOST: ${API_HOST}
       SERVER_PORT: ${SERVER_PORT}
       DATABASE_USERNAME: root
       DATABASE_USERNAME: example
@@ -23,7 +22,7 @@ services:
       - database
     depends_on:
       - database
-    command: npm run server
+    command: npm run start
     # networks:
     #   - app-network
 
@@ -36,9 +35,9 @@ services:
   client:
     build: ./client
     expose:
-      - 4000
+      - ${CLIENT_PORT}
     ports:
-      - 4000:3000
+      - ${CLIENT_PORT}:${CLIENT_PORT}
     volumes:
       - ./client/src:/srv/client/src
       - ./client/public:/srv/client/public
